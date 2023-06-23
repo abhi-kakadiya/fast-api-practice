@@ -2,9 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URI = "sqlite:///./fast-api-task1.db"
+SQLALCHEMY_DATABASE_URI = "postgresql://postgres:abhi8477@localhost:5432/Test"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URI,connect_args={"check_same_thread":False})
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
 Base = declarative_base()
 

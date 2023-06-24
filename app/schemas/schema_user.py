@@ -1,12 +1,12 @@
 from typing import List
 from datetime import date
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class UserBase(BaseModel):
-    name:str
-    birthdate:date
-    gender:str
+    name:str = Field(description="Full name of User",example="Full name")
+    birthdate:date = Field(description="Birthdate of User in given format",example="YYYY-MM-DD")
+    gender:str = Field(description="Gender of User",example="Male|Female")
 
 class UserUpdate(BaseModel):
     name:str

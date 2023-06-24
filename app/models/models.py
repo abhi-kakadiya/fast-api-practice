@@ -7,7 +7,7 @@ from sqlalchemy import Column, Integer, String, Boolean, DateTime, Date,ForeignK
 class UserDB(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True)
+    name = Column(String)
     birthdate = Column(Date)
     gender = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow())

@@ -14,7 +14,7 @@ class UserDB(Base):
     updated_at = Column(DateTime, default=datetime.utcnow())
     is_active = Column(Boolean, default=True)
     is_delete = Column(Boolean, default=False)
-    competitions = relationship("CompetitionDB", back_populates="users")
+    competitions = relationship("CompetitionDB", back_populates="user")
 
 
 
@@ -31,7 +31,7 @@ class CompetitionDB(Base):
     description = Column(String)
     participant_id = Column(Integer, ForeignKey("users.id"))
 
-    users = relationship("UserDB", back_populates="competitions")
+    user = relationship("UserDB", back_populates="competitions")
     entries = relationship("EntryDB", back_populates="competitions")
 
 

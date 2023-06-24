@@ -12,7 +12,7 @@ user = APIRouter(
     tags=["user"]
 )
 
-@user.post("/add")
+@user.post("/add", response_model=UserDisplay)
 def create_user(request: UserBase, db: Session = Depends(get_db)):
 
     request.name = request.name.casefold()

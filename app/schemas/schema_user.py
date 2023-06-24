@@ -2,6 +2,12 @@ from typing import List
 from datetime import date
 from pydantic import BaseModel, Field
 
+class Competition(BaseModel):
+    name:str
+    status:str
+
+    class Config:
+        orm_mode = True
 
 class UserBase(BaseModel):
     name:str = Field(description="Full name of User",example="Full name")
@@ -17,6 +23,7 @@ class UserDisplay(BaseModel):
     name:str 
     birthdate:date
     gender:str
+    competitions: List['Competition'] = []
 
     class Config:
         orm_mode = True

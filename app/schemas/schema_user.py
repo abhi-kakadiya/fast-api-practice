@@ -1,4 +1,4 @@
-from typing import List
+from typing import List,Optional
 from datetime import date
 from pydantic import BaseModel, Field
 
@@ -15,15 +15,15 @@ class UserBase(BaseModel):
     gender:str = Field(description="Gender of User",example="Male|Female")
 
 class UserUpdate(BaseModel):
-    name:str
-    birthdate:date
-    gender:str
+    name:Optional[str]
+    birthdate:Optional[date]
+    gender:Optional[str]
 
 class UserDisplay(BaseModel):
     name:str 
     birthdate:date
     gender:str
-    competitions: List['Competition'] = []
+    competitions: List[Competition] = []
 
     class Config:
         orm_mode = True

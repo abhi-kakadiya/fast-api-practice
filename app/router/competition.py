@@ -43,7 +43,6 @@ def get_all_competitions(db: Session = Depends(get_db)):
 @competition.get("/{id}", response_model=CompetitionDisplay)
 def get_competition_by_id(id:int,db:Session = Depends(get_db)):
     competition = db.query(CompetitionDB).filter(CompetitionDB.id == id).first()
-    print(competition)
     if not competition:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail={"message":f"Competition with ID {id} do not exists"})
     else:
@@ -74,7 +73,7 @@ def delete_competition_by_id(id:int,db:Session=Depends(get_db)):
     competition = db.query(CompetitionDB).filter(id == CompetitionDB.id).first()
     print(competition)
     if not competition:
-        return {"message":f"Competition with id {id} not found"}
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail={"message":f"Competition with ID {id} do not exists"})
     else:
         db.delete(competition)
         db.commit()

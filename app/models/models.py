@@ -19,7 +19,7 @@ class UserDB(Base):
 
 
 class CompetitionDB(Base):
-    __tablename__ = "Competitions"
+    __tablename__ = "competitions"
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
@@ -46,6 +46,6 @@ class EntryDB(Base):
     is_delete = Column(Boolean ,default=False)
     created_at = Column(DateTime, default= datetime.utcnow)
     updated_at = Column(DateTime, default= datetime.utcnow)
-    competition_id = Column(Integer , ForeignKey("Competitions.id"))
+    competition_id = Column(Integer , ForeignKey("competitions.id"))
 
     competitions = relationship("CompetitionDB", back_populates="entries")

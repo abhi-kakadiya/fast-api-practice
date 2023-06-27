@@ -1,0 +1,28 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8080:8000"
+    volumes:
+      - app-data:/app
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=abhi8477
+      - POSTGRES_DB=Test
+    ports:
+      - "5400:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+
+volumes:
+  app-data:
+    name: volume1
+  pg-data:
+    name: postgresql-volume

@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URI = "postgresql://postgres:abhi8477@localhost:5432/Test"
+SQLALCHEMY_DATABASE_URI = "postgresql://postgres:abhi8477@0.tcp.in.ngrok.io:10392/Test"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
